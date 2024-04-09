@@ -198,3 +198,71 @@ console.log("async await promises callback");
       console.log(err);
     });
 }
+
+//better example of promise chaining
+
+{
+  function getDataEx(data /*, getNextDataEx*/) {
+    //we dont need the callback in case of promises
+    //callback function
+    // setTimeout(() => {
+    //   console.log(`${data}`);
+    //   if (getNextDataEx) {
+    //     getNextDataEx();
+    //   }
+    // }, 2000);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(`${data}`);
+        resolve("success");
+        reject("failed");
+        /*if (getNextDataEx) {
+          getNextDataEx();
+        }*/
+      }, 10000);
+    }); //on calling getDataEx, the promise will be immediately returned to us
+    //this will then return the data after 10 secs
+  }
+
+  //getting single data from promise
+  getDataEx(55555)
+    .then((res) => {
+      console.log("promise resolved!!!");
+      console.log(`promise result :: ${res}`);
+    })
+    .catch((err) => {
+      console.log("promise rejected!!!", err);
+    });
+
+  //getting multiple datas from promises
+  getDataEx(66666)
+    .then((res) => {
+      console.log("promise resolved!!!");
+      console.log(`promise result :: ${res}`);
+      getDataEx(123456)
+        .then((res) => {
+          console.log("next promise resolved");
+          console.log(`next promise result ${res}`);
+        })
+        .catch((err) => {
+          console.log("promise rejected!!!", err);
+        });
+    })
+    .catch((err) => {
+      console.log("promise rejected!!!", err);
+    });
+
+  //better way of writing above promise chaining
+  getDataEx(77777)
+    .then((res) => {
+      console.log(`promise resolved 1:: ${res}`);
+      return getDataEx(987654);
+    })
+    .then((res) => {
+      console.log(`promise resolved 2:: ${res}`);
+      return getDataEx(45673645);
+    })
+    .then(() => {
+      console.log(`promise resolved 3:: ${res}`);
+    });
+}
