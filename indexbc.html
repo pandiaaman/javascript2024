@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>learning java script</title>
+    <link rel="stylesheet" href="stylebc.css" />
+  </head>
+  <body>
+    <p>hello this is bro code</p>
+    <h1 id="heading1"></h1>
+
+    <ul id="ul1">
+      <li id="li1">item1</li>
+      <li id="li2">item2</li>
+      <li id="li3">item3</li>
+      <li id="li4">item4</li>
+      <li id="li5">item5</li>
+    </ul>
+
+    <div id="counterdiv">
+      <h2 id="counterval">0</h2>
+    </div>
+    <!-- countdown timer -->
+    <div id="countdowndiv">
+      <h2 id="seconds">60</h2>
+    </div>
+    <!-- stopwatch -->
+    <div id="stopwatchdiv">
+      <h2 id="minCount">00</h2>
+      <h2>:</h2>
+      <h2 id="secCount">00</h2>
+      <button id="swstartbtn">start</button>
+      <button id="swstopbtn">stop</button>
+      <button id="swresetbtn">reset</button>
+      <button id="swlapbtn">lap</button>
+
+      <div id="laps">
+        <ul id="laplist"></ul>
+      </div>
+    </div>
+
+    <!-- dob calculation -->
+    <div id="dobcalc">
+      <form id="dobform">
+        <input
+          id="udate"
+          name="date"
+          type="number"
+          min="1"
+          max="31"
+          placeholder="date"
+        />
+        <input
+          id="umonth"
+          name="month"
+          type="number"
+          min="1"
+          max="12"
+          placeholder="month"
+        />
+        <input
+          id="uyear"
+          name="year"
+          type="number"
+          min="1900"
+          max="2022"
+          placeholder="year"
+        />
+        <button id="submitage" type="submit">calculate age</button>
+        <div id="ageresult"></div>
+      </form>
+    </div>
+    <!-- date picker -->
+    <div id="datepickerdiv" style="height: 50vh">
+      <form id="datepicker">
+        <label for="yeardropdown">year</label>
+        <select name="year" id="yeardropdown"></select>
+
+        <label for="monthdropdown">month</label>
+        <select name="month" id="monthdropdown"></select>
+
+        <label for="datedropdown">date</label>
+        <select name="date" id="datedropdown"></select>
+      </form>
+    </div>
+    <!-- checkbox -->
+    <div id="agreecheckbox">
+      <form id="checkboxform">
+        <input type="checkbox" id="checkbox1" checked="checked" />i agree
+        <button type="submit" id="checkboxbtn">submit</button>
+      </form>
+    </div>
+    <!-- temperature conversion -->
+    <div id="tempconversion">
+      <input
+        type="text"
+        name="utemp"
+        id="utemp"
+        placeholder="enter temperature"
+      />
+      <select name="temptype" id="temptype">
+        <option value="c">celcius</option>
+        <option value="f">farenheit</option>
+      </select>
+      <button name="convertbutton" id="convertbutton">convert</button>
+    </div>
+    <!-- script -->
+    <script src="pracbc_1_intro.js"></script>
+  </body>
+</html>
