@@ -148,7 +148,7 @@ console.log("async await promises callback");
   function getAPIData(data) {
     //a function replicating an API call
     return new Promise((resolve, reject) => {
-      //the API returns a promise immediately saying that withing 5 secs you will get data
+      //the API returns a promise immediately saying that within 5 secs you will get data
       setTimeout(() => {
         //a timeout method to replicate the delay in sending data
         console.log(`data from api promise: ${data}`);

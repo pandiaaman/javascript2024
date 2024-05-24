@@ -52,6 +52,17 @@ console.log("hello from prac2");
   console.log(a); //4
 }
 
+{
+  console.log("********here********");
+  console.log(1 + "1"); //11
+  console.log("1" + 1); //11
+  console.log("1" + 1 + "1"); //111
+  console.log(1 + 1 + "1"); //21
+  console.log("1" + 1 + 1); //111
+  //above statements are calculated from left to right
+  //if any one of the operand is a string the other one will be converted to a string(even if its a number)
+  //Type Coercion: JavaScript automatically converts the number to a string when using the + operator if one of the operands is a string.
+}
 //--> comparison operators
 // ==(equals to) ===(equals to and type) !=(not equals to) !==(not equals to and type)
 // > >= < <=
@@ -136,7 +147,7 @@ console.log("hello from prac2");
   }
 }
 
-//-->oractice questions
+//-->practice questions
 {
   // let input = prompt("enter a number");
   // if (input % 5 === 0) {

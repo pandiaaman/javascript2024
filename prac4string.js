@@ -32,8 +32,9 @@
 
 //string methods
 {
-  let str = `hello there`;
+  let str = ` hello there`;
   console.log(str.toUpperCase());
+  console.log(str.trim());
   //Strings are immultable in java script that is we can not change the defined strings
   console.log(str.slice(2));
   console.log(str.slice(3, 6));
@@ -50,7 +51,7 @@
 
 //practice questions
 {
-  // prompt user to enter their full name and generate a username for them baseed on the input. username should
+  // prompt user to enter their full name and generate a username for them based on the input. username should
   //start with @ followed by their name and ending with length of fullname
   let fullname = prompt(`enter full name`);
   let username = `@`
@@ -62,8 +63,11 @@
 //regular expressions
 {
   let str = `hello how are you`;
-  let pattern = /\s/;
+  // let pattern = /\s/;
+  let pattern = new RegExp(/\s/); //we can define the regexp as following as well (along with the pattern //)
+  console.log("%");
   console.log(pattern.test(str));
+  console.log(str.search(pattern)); //Given both ways are important in order to work with regex
 }
 
 {
@@ -79,6 +83,12 @@
 }
 {
   let str = `pandia`;
-  let pattern = /[0-9]+/;
+  let pattern = /[0-9]*/; //0 or more times
+  console.log(pattern.test(str));
+}
+
+{
+  let str = `pandia`;
+  let pattern = /[0-9]+/; //1 or more times
   console.log(pattern.test(str));
 }

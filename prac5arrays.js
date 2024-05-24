@@ -3,9 +3,11 @@ console.log("hello arrays");
 {
   let nums = [1, 2, 3, 4, 5];
   for (let num in nums) {
+    //in is used with objects gives us the keys
     console.log(num);
   }
   for (let num of nums) {
+    //of is used with arrays and strings
     console.log(num);
   }
 
@@ -22,6 +24,22 @@ console.log("hello arrays");
   console.log(values);
   console.log(typeof values);
   //arrays are mutable
+}
+
+{
+  console.log("***");
+  let arr1 = new Array(); //way to define an array
+  arr1.push(2);
+  arr1.push(5);
+  arr1.push(10);
+  console.log(arr1);
+
+  //another way to define an array
+  let arr2 = [];
+  arr2.push(5);
+  arr2.push(6);
+  arr2.pop();
+  console.log(arr2);
 }
 
 //practice questions

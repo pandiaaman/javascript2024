@@ -75,13 +75,13 @@ console.log(window.document.body.children[2]);
 
   incbtn.addEventListener("click", () => {
     console.log("incrementing");
-    let val = counterval.textContent;
+    let val = Number(counterval.textContent);
     counterval.textContent = val + 1;
   });
 
   decbtn.addEventListener("click", () => {
     console.log("decrementing");
-    let val = counterval.textContent;
+    let val = Number(counterval.textContent);
     counterval.textContent = val - 1;
   });
 

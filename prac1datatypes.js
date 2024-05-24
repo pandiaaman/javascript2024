@@ -17,9 +17,9 @@ somevar = 7;
 console.log(somevar);
 
 //let: CANT redeclare, only update
-let somelet = 4;
-console.log(somelet);
 
+let somelet = 4;
+console.log("somelet" + somelet);
 //redeclaring
 // let somelet = 5;
 //automatically throws error (try to uncomment the above line)
@@ -42,6 +42,14 @@ console.log(someconst);
 //throws error on running, saying assignment to constant variable
 
 //talking about the block scope of let
+{
+  console.log(a);
+  var a = 10; //shows undefined because the execution context has a as undefined
+  //variables defined with var, let and const are all hoisted in the JS code
+  //BUT variables with var are initialized as undefined
+  //WHEREAS the variables with const and let are NOT initialized and hence if we console.log let or const variables, they throw error
+}
+
 {
   let a = 10;
   console.log(a);
@@ -72,7 +80,7 @@ console.log(someconst);
   let c = null;
   console.log(typeof c);
 
-  let d = 11111111111111111111111111111;
+  let d = 11111111111111111111;
   console.log(typeof d);
 
   let e = BigInt(1243);
@@ -84,7 +92,7 @@ console.log(someconst);
 {
   const someStudentObject = {
     fullname: "aman pandia",
-    age: 25,
+    age: 26,
     rollno: 2,
     marks: 100,
   };
@@ -101,7 +109,7 @@ console.log(someconst);
 
   //updating the value of keys of an object
   someStudentObject.rollno = 3;
-
+  someStudentObject["rollno"] = 4; //both the ways above work
   console.log(someStudentObject);
 
   //other way to update
