@@ -20,6 +20,9 @@ window -> document -> html
                                   -> p
                                   -> img
                                   -> script 
+
+
+  window -> document -> body -> children                                  
 */
 
 {
@@ -73,7 +76,7 @@ window -> document -> html
   //querySelectorAll: returns all the elements
   let h1Query = document.querySelector("h1");
   let paraOneIdQuery = document.querySelector("#paraOne");
-  paraOneIdQuery.innerHTML = "<h2>Hellooo i got rejected!!</h2>";
+  paraOneIdQuery.innerHTML = "<h2>Hellooo i got accepted!!</h2>";
   let listItemClassQuery = document.querySelector(".listItem");
 }
 
@@ -160,6 +163,10 @@ window -> document -> html
   divElement.before(newButton3);
 
   //to remove the element we use remove
+
+  newButton3.addEventListener("click", () => {
+    console.log("button 3 is clicked");
+  });
 }
 
 //practice questions
@@ -181,4 +188,74 @@ window -> document -> html
   let elems = document.getElementById("item2");
   console.log(elems);
   elems.classList.add("newClass");
+}
+
+{
+  //creating a stopwatch
+
+  //create a div
+  let stopWatchDiv = document.createElement("div");
+  stopWatchDiv.id = "stopWatchDiv";
+  stopWatchDiv.style.width = "100%";
+  stopWatchDiv.style.textAlign = "center";
+  document.body.append(stopWatchDiv);
+
+  //create a start/stop button
+  let startWatchBtn = document.createElement("button");
+  startWatchBtn.innerText = "start/stop";
+  startWatchBtn.style.padding = "2em";
+  stopWatchDiv.appendChild(startWatchBtn);
+
+  //div for showing hours minutes and seconds
+  let timeDiv = document.createElement("div");
+  stopWatchDiv.appendChild(timeDiv);
+
+  //h3 tags showing hours mins secs
+  let hours = 0;
+  let mins = 0;
+  let secs = 0;
+
+  let hoursShown = document.createElement("h3");
+  hoursShown.innerText = hours;
+  let minsShown = document.createElement("h3");
+  minsShown.innerText = mins;
+  let secsShown = document.createElement("h3");
+  secsShown.innerText = secs;
+
+  timeDiv.appendChild(hoursShown);
+  timeDiv.appendChild(minsShown);
+  timeDiv.appendChild(secsShown);
+
+  //boolean to start or stop the watch
+  let startStop = false;
+
+  startWatchBtn.addEventListener("click", () => {
+    console.log("starting");
+    startStop = !startStop;
+    startStopWatch(startStop);
+  });
+
+  //function
+  const startStopWatch = (startStop) => {
+    console.log(startStop);
+    if (startStop) {
+      if (mins == 60) {
+        mins = 0;
+        hours += 1;
+        hoursShown.innerText = hours;
+      }
+      if (secs == 60) {
+        secs = 0;
+        mins += 1;
+        minsShown.innerText = mins;
+      }
+      secs += 1;
+      secsShown.innerText = secs;
+
+      // setTimeout(startStopWatch(), 1000); //THis also works same thing as below
+      setTimeout(() => {
+        startStopWatch(startStop);
+      }, 1000);
+    }
+  };
 }

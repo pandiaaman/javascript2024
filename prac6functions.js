@@ -2,11 +2,10 @@ console.log("hello functions");
 //functions have function definition and function call
 
 {
+  fun1(1, 3); //functions are hoisted in javascript so we can call them before defining them, that how execution context works
   function fun1(x, y) {
     console.log(x + y);
   }
-
-  fun1(1, 3);
 }
 
 //arrow functions

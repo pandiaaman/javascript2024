@@ -75,13 +75,13 @@ console.log(window.document.body.children[2]);
 
   incbtn.addEventListener("click", () => {
     console.log("incrementing");
-    let val = counterval.textContent;
+    let val = Number(counterval.textContent);
     counterval.textContent = val + 1;
   });
 
   decbtn.addEventListener("click", () => {
     console.log("decrementing");
-    let val = counterval.textContent;
+    let val = Number(counterval.textContent);
     counterval.textContent = val - 1;
   });
 
@@ -461,3 +461,240 @@ console.log(window.document.body.children[2]);
 */
 
 //spread operator in javascript
+{
+  let numbers = [1, 2, 3, 4, 50];
+  //say we want to find the maximum value in the array using Math.max()
+  //but math.max does not work on array
+  //so we can convert the array to numbers by using spread operator
+  let maxval = Math.max(...numbers);
+  console.log(maxval);
+}
+
+{
+  //a callback method is the one that can take function as a parameter
+  function add(a, b) {
+    console.log(a + b);
+    return a + b;
+  }
+
+  function calculate(a, b, operator) {
+    operator(a, b);
+  }
+
+  calculate(1, 7, add);
+
+  //setTimeout is also a callback method that takes in a function as a paramter
+  setTimeout(() => {
+    calculate(1, 3, add); //takes in a function
+  }, 3000);
+
+  function getusername() {
+    setTimeout(() => {
+      console.log("aman");
+    }, 1000);
+  }
+  function getpassword() {
+    setTimeout(() => {
+      console.log("password");
+    }, 1000);
+  }
+
+  getusername();
+  getpassword(); //both are coming in together
+
+  //lets say i want them one after another
+  //only get password after username has been received
+
+  setTimeout(() => {
+    getusername();
+    setTimeout(() => {
+      getpassword();
+    }, 2000);
+  }, 2000);
+
+  //promises : return a promise that we will get the data have three levels, pending, success and failed
+  function getApiData() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log("getting data");
+        resolve("promise success");
+        reject("promise has issue");
+      }, 7000);
+    });
+  }
+
+  //to handle a promise we need to have a then and catch block
+  getApiData()
+    .then((res) => {
+      console.log("resolved");
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  //async and await stops the execution at the given step and only continues after it has been successful
+  async function gettingData() {
+    await getApiData();
+    console.log("waiting for next one...");
+    await getApiData(); //comes after 14 secs because getApiData takes 7 seconds for each response
+  }
+
+  gettingData();
+}
+
+{
+  //spread operators ...   => unpack the elements
+  //expands arrays or strings into separate elements
+  let numbers = [1, 2, 3, 4, 5];
+  console.log(`hello`);
+  console.log(typeof numbers);
+
+  console.log(Math.max(1, 2, 10, 4, 5));
+
+  console.log(Math.max(...numbers));
+
+  let fullname = "aman pandia";
+  console.log([...fullname]);
+
+  let fruits = ["watermelon", "orange", "mango"];
+  let vegetables = ["potato", "cauliflower", "ladybirds"];
+  let food = [...fruits, ...vegetables];
+  console.log(food);
+}
+
+{
+  //rest parameters:
+  // ... => bundles different elements together into an array
+  // very much like spread operators that expands an array into different elements (opposite)
+
+  const food1 = "pizza";
+  const food2 = "burger";
+  const food3 = "roti";
+  const food4 = "sabji";
+
+  function fridge(...foods) {
+    //if used inside function we can pass multiple parameters that will become a part of an array
+    //merges all the inputs to one array
+    console.log(foods);
+    console.log(...foods); //if used outside function then it unpacks the elements from array to independent elements
+  }
+
+  fridge(food1, food2, food3, food4);
+}
+
+{
+  let vals = [31, 26, 34, 4, 15, 2];
+  for (let val in vals) {
+    console.log(val);
+  }
+
+  for (let val of vals) {
+    console.log(val);
+  }
+}
+
+{
+  //generate password based on given inputs
+
+  function generatePassword(
+    passwordLength,
+    includeLowerCase,
+    includeUpperCase,
+    includeNumbers,
+    includeSymbols
+  ) {
+    console.log("generating password based on inputs");
+    if (
+      !(
+        includeLowerCase ||
+        includeUpperCase ||
+        includeNumbers ||
+        includeSymbols
+      )
+    ) {
+      console.log("incorrect requirements");
+      return;
+    } else {
+      const lowercasechars = "abcdefghijklmnopqrstuvwxyz";
+      const uppercasechars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const numbers = "1234567890";
+      const symbols = "!@#$%^&*()_+=-";
+
+      let allowedchars = "";
+      let resultpassword = "";
+
+      allowedchars += includeLowerCase ? lowercasechars : "";
+      allowedchars += includeUpperCase ? uppercasechars : "";
+      allowedchars += includeNumbers ? numbers : "";
+      allowedchars += includeSymbols ? symbols : "";
+
+      console.log(allowedchars);
+      console.log(allowedchars.length);
+      console.log(passwordLength);
+
+      for (let i = 1; i <= passwordLength; i++) {
+        let nextChar = Math.floor(Math.random() * allowedchars.length) + 1;
+        // console.log(`next char :: ${nextChar}`);
+        resultpassword += allowedchars.charAt(nextChar);
+        // console.log(resultpassword);
+      }
+
+      console.log(resultpassword);
+    }
+  }
+
+  const passwordLength = 10;
+  const includeLowerCase = true;
+  const includeUpperCase = true;
+  const includeNumbers = true;
+  const includeSymbols = true;
+
+  generatePassword(
+    passwordLength,
+    includeLowerCase,
+    includeUpperCase,
+    includeNumbers,
+    includeSymbols
+  );
+}
+
+{
+  //callbacks
+  /*
+  a function that is passed as an argument to another function
+
+  handles asynchronous operations
+  */
+
+  function callafter5secs() {
+    console.log("i am called after 10 secs");
+  }
+
+  setTimeout(callafter5secs, 10000); //setTimeout is a callback function
+
+  //other example
+  function calculate(operator, operand1, operand2) {
+    operator(operand1, operand2);
+  }
+
+  function add(num1, num2) {
+    console.log(num1 + num2);
+  }
+
+  calculate(add, 2, 300000000000);
+}
+
+//forEach
+{
+  let nums = [1, 2, 3, 4];
+
+  let res = nums.forEach((element) => {
+    console.log(element * 2);
+  });
+
+  nums.forEach(exponent2);
+  function exponent2(num) {
+    console.log(num * num);
+  }
+}
