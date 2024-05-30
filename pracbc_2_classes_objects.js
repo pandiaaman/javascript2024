@@ -126,6 +126,21 @@
 
   //classes as funcitons
   //these are called constructor functions
+  function Animal(name) {
+    this.name = name;
+  }
+
+  //prototype of a function
+  //When a new object is created using a constructor function, it automatically inherits the constructor’s prototype object.
+  //any properties or methods defined in the prototype can be accessed by the new object
+  //Prototypes are objects that allow developers to share properties and methods between multiple instances of an object, reducing memory usage and improving performance.
+  Animal.prototype.speak = function () {
+    return `${this.name} makes a noice`;
+  };
+
+  let cat = new Animal("sushi");
+  cat.speak();
+
   function Car(brand, year, make, price) {
     //see the capitalization of car
     (this.brand = brand),
