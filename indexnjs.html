@@ -8,12 +8,48 @@
   <body>
     <p>namaste js</p>
 
+    <!-- event delegation example 1-->
+    <div id="event-del1">
+      <p>
+        click on the below list items to go to their respective pages but notice
+        we have used only one eventListener on parent (use
+        pracnjs_10_protoypalInheritence)
+      </p>
+      <ul id="list1">
+        <li id="listitem1">laptop</li>
+        <li id="listitem2">mobile</li>
+        <li id="listitem3">book</li>
+        <li id="listitem4">mouse</li>
+        <li id="listitem5">keyboard</li>
+      </ul>
+    </div>
+
+    <div id="event-del2">
+      <p>
+        here the name and pancard will be automatically in uppercase because of
+        data-uppercase
+      </p>
+      <form id="parent-form">
+        <input type="text" id="name" placeholder="enter name" data-uppercase />
+        <input type="text" id="email" placeholder="enter email" />
+        <input type="text" id="pancard" placeholder="pancard" data-uppercase />
+      </form>
+    </div>
+    <div id="debouncing">
+      <p>
+        this is a search bar hitting the API on every pause (js is in
+        pracnjs_11_debouncing one)
+      </p>
+      <input type="text" id="search-bar" placeholder="search" />
+      <div id="results"></div>
+    </div>
     <!-- <script src="pracnjs_4_firstClassFunctions.js"></script> -->
     <!-- <script src="pracnjs_5_eventListeners.js"></script> -->
     <!-- <script src="pracnjs_6_njsJSEngineWorking.js"></script> -->
     <!-- <script src="pracnjs_7_callbackHells.js"></script> -->
     <!-- <script src="pracnjs_8_promises.js"></script> -->
     <!-- <script src="pracnjs_9_asyncawait.js"></script> -->
-    <script src="pracnjs_10_protoypalInheritence.js"></script>
+    <!-- <script src="pracnjs_10_protoypalInheritence.js"></script> -->
+    <script src="pracnjs_11_debouncingThrottling.js"></script>
   </body>
 </html>
